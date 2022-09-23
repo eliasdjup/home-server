@@ -6,7 +6,7 @@ services:
     environment:
       - TZ=Europe/Oslo
     volumes:
-      - ~/Projects/home-server/mnt/home-assistant-data:/config
+      - ./mnt/home-assistant-data:/config
       - /etc/localtime:/etc/localtime:ro
     restart: always
     privileged: true
@@ -23,7 +23,7 @@ services:
       - TZ=Europe/Oslo
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ~/Projects/home-server/mnt/portainer-data:/data
+      - ./mnt/portainer-data:/data
     ports:
       - 9000:9000
       - 8000:8000
@@ -38,7 +38,7 @@ services:
       - PGID=12
     restart: always
     volumes:
-      - ~/Projects/home-server/mnt/heimdall-data:/config
+      - ./mnt/heimdall-data:/config
     ports:
       - 7888:80
       - 4443:443
