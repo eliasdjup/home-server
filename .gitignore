@@ -1,0 +1,6 @@
+# Mount files for docker volumes
+/mnt
+
+
+# MacOS
+.DS_Store
