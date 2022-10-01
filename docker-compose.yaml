@@ -9,6 +9,7 @@ services:
       - ./mnt/home-assistant-data:/config
     restart: always
     privileged: true
+    network_mode: bridge
     ports:
       - 8123:8123
 
@@ -27,6 +28,7 @@ services:
       - 9000:9000
       - 8000:8000
       - 9443:9443
+    network_mode: bridge
 
   heimdall:
     image: linuxserver/heimdall:latest
@@ -41,3 +43,4 @@ services:
     ports:
       - 7888:80
       - 4443:443
+    network_mode: bridge
