@@ -1,6 +1,25 @@
-# Mount files for docker volumes
+# Docker volumes and data
 /mnt
+*.env
+.env
+docker-compose.override.yml
 
+# Logs
+*.log
+logs/
 
 # MacOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
