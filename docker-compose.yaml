@@ -1,46 +1,20 @@
-version: '3'
 services:
-  homeassistant:
-    image: "homeassistant/home-assistant:latest"
-    container_name: homeassistant
-    environment:
-      - TZ=Europe/Oslo
-    volumes:
-      - ./mnt/home-assistant-data:/config
-    restart: always
-    privileged: true
-    network_mode: bridge
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
     ports:
-      - 8123:8123
+      - "3000:8080"
+    environment:
+      - WEBUI_AUTH=false
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - open-webui:/app/backend/data
 
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: always
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - TZ=Europe/Oslo
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./mnt/portainer-data:/data
-    ports:
-      - 9000:9000
-      - 8000:8000
-      - 9443:9443
-    network_mode: bridge
+  watchtower:
+      image: containrrr/watchtower
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
 
-  heimdall:
-    image: linuxserver/heimdall:latest
-    container_name: heimdall
-    environment:
-      - TZ=Europe/Oslo
-      - PUID=501
-      - PGID=12
-    restart: always
-    volumes:
-      - ./mnt/heimdall-data:/config
-    ports:
-      - 7888:80
-      - 4443:443
-    network_mode: bridge
+volumes:
+  open-webui:
