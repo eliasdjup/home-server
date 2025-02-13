@@ -1,6 +1,6 @@
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:main@sha256:26f0c76fcfe234ce6ad670fb65a9f772af0c263d261c2e2b3c784bae2d196c45
     ports:
       - "3000:8080"
     environment:
@@ -12,7 +12,7 @@ services:
       - open-webui:/app/backend/data
 
   watchtower:
-      image: containrrr/watchtower
+      image: containrrr/watchtower@sha256:6dd50763bbd632a83cb154d5451700530d1e44200b268a4e9488fefdfcf2b038
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
 
