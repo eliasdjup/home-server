@@ -1,6 +1,6 @@
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:main@sha256:26f0c76fcfe234ce6ad670fb65a9f772af0c263d261c2e2b3c784bae2d196c45
+    image: ghcr.io/open-webui/open-webui:main@sha256:4450eb013528cbb49d8c4ea83602fb918be7dc01cabd492f8302184b78b793f2
     ports:
       - "3000:8080"
     environment:
